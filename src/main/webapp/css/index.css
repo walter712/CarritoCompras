@@ -1,0 +1,170 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f0f0;
+}
+
+.slider {
+    position: relative;
+    width: 45%; /* ancho de la pantalla */
+    height: 50%; /* La altura se ajusta proporcionalmente al ancho */
+    margin: 10px auto;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+    background-color: #fff;
+    
+}
+
+.slides {
+    display: flex;
+    transition: transform 0.5s cubic-bezier(0.5, 0, 0.5, 1);
+    width: 300%; /* Ajustado para 3 diapositivas */
+}
+
+.slide {
+    width: 100%;
+    flex-shrink: 0;
+    
+}
+
+.slide img {
+    object-fit: cover; /* Las imágenes se ajustan correctamente sin deformarse */
+    border-radius: 15px;
+}
+
+.nav {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+    padding: 0 20px;
+}
+
+.nav span {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    padding: 10px;
+    border-radius: 50%;
+    user-select: none;
+}
+
+.indicators {
+    position: absolute;
+    bottom: 15px;
+    width: 100%;
+    text-align: center;
+}
+
+.dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 5px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+}
+
+.dot.active {
+    background-color: #fff;
+}
+
+/*cardss*/
+
+#cat{
+    background-color: #b5b4f5;
+    margin: 10px auto;
+}
+
+#row{
+    background-image: url(fondo.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.card {
+  width: 100%;
+  height: 500px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border: none;
+  overflow: hidden;
+}
+
+/* Hover: zoom en el card */
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Imagen dentro del card */
+.card-img-top {
+  height: 200px;
+  object-fit: cover;
+}
+
+
+/*pies de pagina*/
+.footer {
+    background-color: #0d253f;
+    color: white;
+    padding: 40px 0;
+    font-size: 14px;
+}
+
+.footer h5 {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.footer ul {
+    padding-left: 0;
+    list-style: none;
+}
+
+.footer ul li {
+    margin-bottom: 10px;
+}
+
+.footer ul li a {
+    color: #b2c7d9;
+    text-decoration: none;
+}
+
+.footer ul li a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+.social-icons {
+    margin-top: 20px;
+}
+
+.social-icons i {
+    font-size: 20px;
+    color: #ffffff;
+}
+
+.social-icons i:hover {
+    color: #b2c7d9;
+}
+
+.text-end {
+    text-align: right;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
