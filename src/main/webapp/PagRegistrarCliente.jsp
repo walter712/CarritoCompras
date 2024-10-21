@@ -48,22 +48,18 @@
             <div class="row" id="row">
                 <c:forEach items="${productos}" var="item">
                     <div class="col-sm-3 mt-1" style="padding: 15px">
-                        <form action="CarritoControlador" method="get">
-                            <div class="card" style="border-color: chartreuse">
+                        <div class="card" style="border-color: chartreuse">
                             <img src="assets/img/productos/${item.imagen}""/>
                             <div class="card-body">
                                 <h5 class="card-title">${item.nom}</h5>
-                                <input type="hidden" name="accion" value="agregar">
-                                <input type="hidden" name="id" value="${item.id_pro}">
                                 <div class="d-flex justify-content-between align-items-center">
-                                    <button type="submit" class="btn btn-sm btn-primary">
+                                    <button type="button" class="btn btn-sm btn-primary">
                                         <i class="fa fa-shopping-cart"></i> Agregar al carrito
                                     </button>
                                     <small class="fw-bold">$/${item.precio}</small>
                                 </div>
                             </div>
                         </div>
-                        </form>
                     </div>
                 </c:forEach>
             </div>

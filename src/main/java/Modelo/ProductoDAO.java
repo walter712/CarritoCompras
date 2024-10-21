@@ -54,4 +54,40 @@ public class ProductoDAO {
         }
         return lista;
     }
+    
+    public Producto buscarPorId(int id){
+        Producto obj = null;
+        try {
+            cn = Conexion.getConnection();
+            String sql = "select * from Producto where id_prod = ?";
+            ps = cn.prepareStatement(sql);
+            ps.setInt(1,id);
+            rs = ps.executeQuery();
+            
+            while (rs.next()) {  
+                obj = new Producto();
+                obj.setId_pro(rs.getInt("id_prod"));
+                obj.setNom(rs.getString("nombre"));
+                obj.setPrecio(rs.getDouble("precio"));
+                obj.setImagen(rs.getString("imagen"));
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }finally{
+            try {
+                if(cn != null){
+                    cn.close();
+                }
+                if(ps != null){
+                    ps.close();
+                }
+                if(rs != null){
+                    rs.close();
+                }
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        }
+        return obj;
+    }
 }
