@@ -48,9 +48,9 @@
             <div class="row" id="row">
                 <c:forEach items="${productos}" var="item">
                     <div class="col-sm-3 mt-1" style="padding: 15px">
-                        <form action="CarritoControlador" method="get">
+                        <form action="Controlador" method="get">
                             <div class="card" style="border-color: chartreuse">
-                            <img src="assets/img/productos/${item.imagen}""/>
+                                <img src="assets/img/productos/${item.imagen}" alt="${item.nom}"/>
                             <div class="card-body">
                                 <h5 class="card-title">${item.nom}</h5>
                                 <input type="hidden" name="accion" value="agregar">

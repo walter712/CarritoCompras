@@ -15,7 +15,8 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="Controlador?accion=listar">
-                            <i class="fa fa-shopping-cart"></i>{0} Carrito
+                            <i class="fa fa-shopping-cart"></i>
+                            [<span class="fw-bold">${sessionScope.carrito != null? sessionScope.carrito.size() : 0}</span>] Carrito
                         </a>
                     </li>
                 </ul>
