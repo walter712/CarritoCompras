@@ -9,43 +9,43 @@ package Modelo;
  * @author PC-20
  */
 public class Cliente {
-    private int id_cli;
-    private String nom;
-    private String apell;
-    private String tele;
+    private int idCliente;
+    private String nombres;
+    private String apellidos;
+    private String telefono;
     private String correo;
-    private String pass;
+    private String password;
 
-    public int getId_cli() {
-        return id_cli;
+    public int getIdCliente() {
+        return idCliente;
     }
 
-    public void setId_cli(int id_cli) {
-        this.id_cli = id_cli;
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
     }
 
-    public String getNom() {
-        return nom;
+    public String getNombres() {
+        return nombres;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
+    public void setNombres(String nombres) {
+        this.nombres = nombres;
     }
 
-    public String getApell() {
-        return apell;
+    public String getApellidos() {
+        return apellidos;
     }
 
-    public void setApell(String apell) {
-        this.apell = apell;
+    public void setApellidos(String apellidos) {
+        this.apellidos = apellidos;
     }
 
-    public String getTele() {
-        return tele;
+    public String getTelefono() {
+        return telefono;
     }
 
-    public void setTele(String tele) {
-        this.tele = tele;
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
     }
 
     public String getCorreo() {
@@ -56,14 +56,13 @@ public class Cliente {
         this.correo = correo;
     }
 
-    public String getPass() {
-        return pass;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPass(String pass) {
-        this.pass = pass;
+    public void setPassword(String password) {
+        this.password = password;
     }
-    
-    
-    
+
+   
 }

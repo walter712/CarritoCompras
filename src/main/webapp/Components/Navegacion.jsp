@@ -26,7 +26,7 @@
                 </form>
                 &nbsp;
                 <form action="d-flex" role="search">
-                    <a href="#" class="btn btn-dark">
+                    <a href="ControladorC?accion=nuevo" class="btn btn-dark">
                         <i class="fas fa-user-plus"></i> Registrarse
                     </a>
                     
