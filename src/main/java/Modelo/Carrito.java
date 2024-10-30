@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 public class Carrito {
     public void AgregarCarrito(DetallePedido detalle, HttpServletRequest request){
         ArrayList<DetallePedido> lista = ObtenerSesion(request);
-        int posc = ExixteProducto(lista, detalle.getProducto().getId_pro());
+        int posc = ExisteProducto(lista, detalle.getProducto().getId_pro());
         
         if(posc == -1){
             lista.add(detalle);
@@ -29,7 +29,7 @@ public class Carrito {
     public double ImporteTotal(ArrayList<DetallePedido> lista){
         double total = 0;
         for (DetallePedido item : lista) {
-            total = item.Importe();
+            total += item.Importe();
         }
         return total;
     }
@@ -55,7 +55,7 @@ public class Carrito {
         request.getSession().setAttribute("carrito", lista);
     }
     
-    public int ExixteProducto(ArrayList<DetallePedido> lista, int idProd){
+    public int ExisteProducto(ArrayList<DetallePedido> lista, int idProd){
         
         for (int i = 0; i < lista.size(); i++) {
             if(lista.get(i).getProducto().getId_pro() == idProd){

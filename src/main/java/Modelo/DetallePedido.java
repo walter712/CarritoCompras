@@ -13,7 +13,7 @@ public class DetallePedido {
     private int cantidad;
     
     public void AumentarCantidad(int cantidad){
-        this.cantidad = cantidad;
+        this.cantidad += cantidad;
     }
     
     public double Importe(){

@@ -17,10 +17,11 @@
             <h5 style="align-content: center">Carrito</h5>
             <hr />
             <div class="row" id="row">
+                
                 <div class="col-md-9">
                     <div class="card">
-                        <div class="card.body">
-                            <div class="table-responcive">
+                        <div class="card-body">
+                            <div class="table-responsive">
                                 <table class="table table-bordered table-striped">
                                     <thead style="background-color: #a8dd7b">
                                         <tr>
@@ -29,35 +30,38 @@
                                             <th>PRECIO</th>
                                             <th>CANTIDAD</th>
                                             <th>IMPORTE</th>
-                                            <th>ACCION</th>
+                                            <th>ACCIÓN</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <c:forEach items="${carrito}" var="item" varStatus="loop">
-                                        <td>
-                                            <img src="assets/img/productos/${item.producto.imagen}" width="50px" height="60px" alt="${item.producto.nom}"/>
-                                        </td>
-                                        <td>${item.producto.nom}</td>
-                                        <td>${item.producto.precio}</td>
-                                        <td>${item.cantidad}</td>
-                                        <td>${item.Importe()}</td>
-                                        <td>
-                                            <a href="Controlador?accion=eliminar&indice=${loop.index}" title="Eliminar" class="btn btn-danger btn-sm">
-                                                <i class="fa fa-trash-alt"></i>
-                                            </a>
-                                        </td>
-                                    </c:forEach>
-                                        <c:if test="${!(carrito !=null && carrito.size() > 0)}">
-                                            <tr class="text-center">
-                                                <td colspan="6">Carrito Vacio</td>
+                                            <tr>
+                                                <td>
+                                                    <img src="assets/img/productos/${item.producto.imagen}" width="50px" height="60px" alt="${item.producto.nom}"/>
+                                                </td>
+                                                <td>${item.producto.nom}</td>
+                                                <td>${item.producto.precio}</td>
+                                                <td>${item.cantidad}</td>
+                                                <td>${item.Importe()}</td>
+                                                <td>
+                                                    <a href="Controlador?accion=eliminar&indice=${loop.index}" title="Eliminar" class="btn btn-danger btn-sm">
+                                                        <i class="fa fa-trash-alt"></i>
+                                                    </a>
+                                                </td>
                                             </tr>
-                                    </c:if>
+                                        </c:forEach>
+                                        <c:if test="${!(carrito != null && carrito.size() > 0)}">
+                                            <tr class="text-center">
+                                                <td colspan="6">Carrito Vacío</td>
+                                            </tr>
+                                        </c:if>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                     </div>
                 </div>
+
 
                 <div class="col-md-3">
                     <div class="card">
@@ -83,7 +87,6 @@
             </div>
         </div>
 
-        <script src="script.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>

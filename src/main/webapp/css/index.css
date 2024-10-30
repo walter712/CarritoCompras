@@ -9,74 +9,75 @@ body {
     background-color: #f0f0f0;
 }
 
-.slider {
-    position: relative;
-    width: 45%; /* ancho de la pantalla */
-    height: 50%; /* La altura se ajusta proporcionalmente al ancho */
-    margin: 10px auto;
+/* Estilos para el carrusel */
+.carousel {
+    max-width: 800px;
+    margin: auto;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
     overflow: hidden;
-    border-radius: 15px;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
-    background-color: #fff;
-    
 }
 
-.slides {
-    display: flex;
-    transition: transform 0.5s cubic-bezier(0.5, 0, 0.5, 1);
-    width: 300%; /* Ajustado para 3 diapositivas */
+.carousel-inner img {
+    border-radius: 10px;
+    transition: transform 0.5s ease;
 }
 
-.slide {
-    width: 100%;
-    flex-shrink: 0;
-    
+/* Efecto de zoom en las imágenes al cambiar de slide */
+.carousel-item.active img {
+    transform: scale(1.05);
 }
 
-.slide img {
-    object-fit: cover; /* Las imágenes se ajustan correctamente sin deformarse */
-    border-radius: 15px;
+/* Estilos para el texto del carrusel */
+.carousel-caption h5 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #ffffff;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
 }
 
-.nav {
-    position: absolute;
-    top: 50%;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    transform: translateY(-50%);
-    padding: 0 20px;
+.carousel-caption p {
+    font-size: 1.2rem;
+    color: #ffffff;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
 }
 
-.nav span {
-    cursor: pointer;
-    background-color: rgba(0, 0, 0, 0.5);
-    color: #fff;
-    padding: 10px;
-    border-radius: 50%;
-    user-select: none;
-}
-
-.indicators {
-    position: absolute;
-    bottom: 15px;
-    width: 100%;
-    text-align: center;
-}
-
-.dot {
-    cursor: pointer;
-    height: 15px;
+/* Indicadores personalizados */
+.carousel-indicators [data-bs-target] {
+    background-color: #ffffff;
+    border: 2px solid #333;
     width: 15px;
-    margin: 0 5px;
-    background-color: rgba(0, 0, 0, 0.5);
+    height: 15px;
     border-radius: 50%;
-    display: inline-block;
-    transition: background-color 0.3s ease;
+    opacity: 0.8;
 }
 
-.dot.active {
-    background-color: #fff;
+.carousel-indicators .active {
+    background-color: #333;
+    opacity: 1;
+}
+
+/* Botones de navegación */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    filter: invert(1);
+    width: 50px;
+    height: 50px;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    background-color: rgba(0, 0, 0, 0.3);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 /*cardss*/
@@ -115,56 +116,80 @@ body {
 }
 
 
-/*pies de pagina*/
+/* Estilos para el pie de página */
 .footer {
-    background-color: #0d253f;
-    color: white;
-    padding: 40px 0;
-    font-size: 14px;
+    background-color: #000;
+    color: #fff;
+    padding: 40px 20px;
+    font-family: Arial, sans-serif;
 }
 
-.footer h5 {
-    font-size: 16px;
-    margin-bottom: 20px;
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: auto;
 }
 
-.footer ul {
-    padding-left: 0;
-    list-style: none;
+.footer-section {
+    flex: 1;
+    min-width: 200px;
+    margin: 10px;
 }
 
-.footer ul li {
+.footer-section h3 {
+    font-size: 1.2rem;
+    font-weight: bold;
     margin-bottom: 10px;
 }
 
-.footer ul li a {
-    color: #b2c7d9;
+.footer-section p {
+    margin: 5px 0;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 5px;
+}
+
+.footer-section ul li a {
+    color: #fff;
     text-decoration: none;
 }
 
-.footer ul li a:hover {
-    color: #ffffff;
+.footer-section ul li a:hover {
     text-decoration: underline;
 }
 
-.social-icons {
-    margin-top: 20px;
+.subscribe {
+    display: flex;
+    align-items: center;
 }
 
-.social-icons i {
-    font-size: 20px;
-    color: #ffffff;
+.subscribe input[type="email"] {
+    padding: 10px;
+    border: none;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+    width: 70%;
 }
 
-.social-icons i:hover {
-    color: #b2c7d9;
+.subscribe button {
+    padding: 10px 20px;
+    background-color: #0084ff;
+    color: #fff;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
 }
 
-.text-end {
-    text-align: right;
+.subscribe button:hover {
+    background-color: #006bb3;
 }
 
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-}
+
