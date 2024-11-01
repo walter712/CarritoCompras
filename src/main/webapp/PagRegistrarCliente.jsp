@@ -9,10 +9,12 @@
         <title>Bootstrap demo</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <link rel="stylesheet" href="css/Carrito.css"/>
     </head>
     <body>
         <jsp:include page="Components/Navegacion.jsp"/>
+        <jsp:include page="Components/Mensaje.jsp"/>
 
         <div id="cat" class="container-fluid mt-3" style="width: 80%;">
 
@@ -23,13 +25,13 @@
                         <div class="card-body">
                             <h5 style="align-content: center">Registrar Cuenta</h5>
                             <hr />
-                            <form method="POST" action="ControladorC">
+                            <form action="ControladorC" method="POST">
                                 <div class="row">
 
                                     <div class="col-sm-6">
                                         <div class="mb-3">
                                             <label>Nombres: <span class="obligatorio">(*)</span></label>
-                                            <input type="text" class="form-control"  
+                                            <input value="${cliente.nombres}" type="text" class="form-control"  
                                                    name="nombres" placeholder="Ingrese su nombre" required="" />
                                         </div>
                                     </div>
@@ -37,7 +39,7 @@
                                     <div class="col-sm-6">
                                         <div class="mb-3">
                                             <label>Apellidos <span class="obligatorio">(*)</span></label>
-                                            <input type="text" class="form-control" 
+                                            <input value="${cliente.apellidos}" type="text" class="form-control" 
                                                    name="apellidos" placeholder="Ingrese sus apellidos" required="" />
                                         </div>
                                     </div> 
@@ -48,7 +50,7 @@
                                     <div class="col-sm-12">
                                         <div class="mb-3">
                                             <label>Telefono: </label>
-                                            <input type="tel" class="form-control"
+                                            <input value="${cliente.telefono}" type="tel" class="form-control"
                                                    name="telefono" placeholder="Ingrese su telefono" />
                                         </div>
                                     </div>
@@ -58,7 +60,7 @@
                                     <div class="col-sm-12">
                                         <div class="mb-3">
                                             <label>Correo electronico: <span class="obligatorio">(*)</span></label>
-                                            <input type="email" class="form-control" 
+                                            <input value="${cliente.correo}" type="email" class="form-control" 
                                                    name="correo" placeholder="Ingrese su correo electronico" required="" />
                                         </div>
                                     </div>
@@ -68,13 +70,13 @@
                                     <div class="col-sm-12">
                                         <div class="mb-3">
                                             <label>Contraseña: <span class="obligatorio">(*)</span></label>
-                                            <input type="password" class="form-control" 
+                                            <input value="${cliente.password}" type="password" class="form-control" 
                                                    name="password" placeholder="Ingrese su Contraseña" required="" />
                                         </div>
                                     </div>
                                 </div>
 
-                                <input type="hidden" name="acion" value="guardar"/>
+                                <input type="hidden" name="accion" value="guardar"/>
                                 <button type="submit" class="btn btn-primary">Registrarse</button>
                             </form>
                         </div>
