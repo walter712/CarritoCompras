@@ -22,7 +22,7 @@ public class ClienteDAO {
         int result = 0;
         try {
             cn = Conexion.getConnection();
-            String sql = "insert into Cliente(nombres,apellidos,telefono,correo,password)"
+            String sql = "insert into cliente(nombres,apellidos,telefono,correo,password)"
                     + " values(?,?,?,?,?)";
             ps = cn.prepareStatement(sql);
             ps.setString(1, obj.getNombres().trim());
@@ -31,7 +31,7 @@ public class ClienteDAO {
             ps.setString(4, obj.getCorreo().trim());
             ps.setString(5, obj.getPassword());
             
-            ps.executeUpdate();
+            result = ps.executeUpdate();
         } catch (Exception ex) {
             ex.printStackTrace();
         }finally{
@@ -45,5 +45,35 @@ public class ClienteDAO {
             }
         }
         return result;
+    }
+    
+    public boolean ExisteCorreo(String correo){
+        int result = 0;
+        try {
+            cn = Conexion.getConnection();
+            String sql = "select count(1) from cliente where correo = ?";
+            ps = cn.prepareCall(sql);
+            ps.setString(1, correo);
+            rs = ps.executeQuery();
+            
+            if(rs.next()){
+                return (rs.getInt(1)>0);
+            }
+            
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }finally{
+            try {
+                if(cn != null){
+                    cn.close();
+                }if(ps != null){
+                    ps.close();
+                }if(rs != null){
+                    rs.close();
+                }
+            } catch (Exception e) {
+            }
+        }
+        return false;
     }
 }

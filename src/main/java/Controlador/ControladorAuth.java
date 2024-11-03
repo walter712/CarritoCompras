@@ -1,11 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
 package Controlador;
 
+import Modelo.AuthDAO;
 import Modelo.Cliente;
-import Modelo.ClienteDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -13,14 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author WALTER
- */
-public class ControladorC extends HttpServlet {
+public class ControladorAuth extends HttpServlet {
 
-    private final String pagNuevo = "PagRegistrarCliente.jsp";
-    private ClienteDAO cliDao = new ClienteDAO();
+    private AuthDAO authDao = new AuthDAO();
+    private final String pagLogin = "Login.jsp";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -29,52 +21,52 @@ public class ControladorC extends HttpServlet {
         String accion = request.getParameter("accion");
 
         switch (accion) {
-            case "nuevo":
-                Nuevo(request, response);
+            case "login":
+                Login(request, response);
                 break;
-            case "guardar":
-                Guardar(request, response);
+            case "autentificarse":
+                Autentificarse(request, response);
+                break;
+            case "logout":
+                Logout(request, response);
                 break;
             default:
                 throw new AssertionError();
         }
     }
 
-    protected void Guardar(HttpServletRequest request, HttpServletResponse response)
+    protected void Autentificarse(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-        Cliente obj = new Cliente();
-        obj.setNombres(request.getParameter("nombres"));
-        obj.setApellidos(request.getParameter("apellidos"));
-        obj.setTelefono(request.getParameter("telefono"));
-        obj.setCorreo(request.getParameter("correo"));
-        obj.setPassword(request.getParameter("password"));
+        String correo = request.getParameter("correo");
+        String password = request.getParameter("password");
 
-        if (cliDao.ExisteCorreo(obj.getCorreo().trim()) == false) {
-            int result = cliDao.Guardar(obj);
+        Cliente obj = authDao.Login(correo, password);
 
-            if (result > 0) {
-                request.getSession().setAttribute("success", "Cuenta registrada");
-                response.sendRedirect("ControladorC?accion=nuevo");
-                return;
-            } else {
-                request.getSession().setAttribute("error", "No se pudo registrar la cuenta");
-            }
+        if (obj != null) {
+            request.getSession().setAttribute("usuario", obj);
+            response.sendRedirect("index.jsp");
         } else {
-            request.getSession().setAttribute("error", "El correo " + obj.getCorreo() + " ya se encuentra registrado");
+            request.getSession().setAttribute("error", "Correo y/o contraseña incorrecta");
+            request.getRequestDispatcher(pagLogin).forward(request, response);
         }
 
-        request.setAttribute("cliente", obj);
-        request.getRequestDispatcher(pagNuevo).forward(request, response);
     }
 
-    protected void Nuevo(HttpServletRequest request, HttpServletResponse response)
+    protected void Login(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-        request.setAttribute("cliente", new Cliente());
-        request.getRequestDispatcher(pagNuevo).forward(request, response);
+        request.getRequestDispatcher(pagLogin).forward(request, response);
+    }
+
+    protected void Logout(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+
+        request.getSession().removeAttribute("usuario");
+        response.sendRedirect("index.jsp");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
