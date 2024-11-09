@@ -9,16 +9,18 @@
         <title>Bootstrap demo</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <link rel="stylesheet" href="css/Carrito.css"/>
     </head>
     <body>
         <jsp:include page="Components/Navegacion.jsp"/>
+        <jsp:include page="Components/Mensaje.jsp"/>
 
         <div id="cat" class="container-fluid mt-3" style="width: 80%;">
             <h5 style="align-content: center">Carrito</h5>
             <hr />
             <div class="row" id="row">
-                
+
                 <div class="col-md-9">
                     <div class="card">
                         <div class="card-body">
@@ -67,21 +69,23 @@
                 <div class="col-md-3">
                     <div class="card">
                         <div class="card-body">
-                            <div class="row">
-                                <h5>RESUMEN COMPRA</h5>
-                                <hr />
+                            <form action="ControladorP" method="POST">
+                                <div class="row">
+                                    <h5>RESUMEN COMPRA</h5>
+                                    <hr />
 
-                                <div class="d-flex justify-content-between nb-4">
-                                    <p class="nb-2">Total</p>
-                                    <p class="nb-2">$/${total}</p>
-                                </div>
-
-                                <button class="btn btn-warning btn-block btn-lg">
-                                    <div class="d-flex justify-content-between">
-                                        <span><i class="fa fa-credit-card"></i>PROCESAR</span>
+                                    <div class="d-flex justify-content-between nb-4">
+                                        <p class="nb-2">Total</p>
+                                        <p class="nb-2">$/${total}</p>
                                     </div>
-                                </button>
-                            </div>
+                                    <input type="hidden" name="accion" value="procesar">
+                                    <button ${carrito.size() == 0 ? 'disable': ''} type="submit" class="btn btn-warning btn-block btn-lg">
+                                        <div class="d-flex justify-content-between">
+                                            <span><i class="fa fa-credit-card"></i>PROCESAR</span>
+                                        </div>
+                                    </button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>

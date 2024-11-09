@@ -16,6 +16,10 @@
         <servlet-name>ControladorAuth</servlet-name>
         <servlet-class>Controlador.ControladorAuth</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ControladorP</servlet-name>
+        <servlet-class>Controlador.ControladorP</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Controlador</servlet-name>
         <url-pattern>/Controlador</url-pattern>
@@ -31,6 +35,10 @@
     <servlet-mapping>
         <servlet-name>ControladorAuth</servlet-name>
         <url-pattern>/ControladorAuth</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControladorP</servlet-name>
+        <url-pattern>/ControladorP</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
